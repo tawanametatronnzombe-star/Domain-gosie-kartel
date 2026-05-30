@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gosie Kartel Domains</title>
+<style>
+  body { font-family: 'Montserrat', sans-serif; background: #f5f5f5; margin:0; padding:0; }
+  header { background:#111; color:#00FFFF; padding:20px; text-align:center; }
+  h1 { margin:0; font-size:2em; }
+  main { padding:40px 20px; max-width:600px; margin:0 auto; background:#fff; border-radius:10px; }
+  label { display:block; margin-bottom:5px; font-weight:600; }
+  input { width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px; font-size:1em; }
+  button { padding:12px; width:100%; background:#0d6efd; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:600; }
+  button:hover { background:#0b5ed7; }
+  #success { display:none; color:green; margin-bottom:15px; }
+  #error { display:none; color:red; margin-bottom:15px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gosie Kartel Domain Hub</h1>
+  <p>Register your free domain (exclusive for Metatron878)</p>
+</header>
+
+<main>
+  <div id="success">✅ Domain registered successfully! Redirecting...</div>
+  <div id="error">❌ Invalid secret code. Only Metatron878 can register.</div>
+
+  <form id="domain-form">
+    <label for="domain">Enter your secret code</label>
+    <input type="text" id="domain" placeholder="Secret code" required>
+    <button type="submit">Claim Domain</button>
+  </form>
+</main>
+
+<script>
+  const form = document.getElementById('domain-form');
+  const success = document.getElementById('success');
+  const error = document.getElementById('error');
+
+  // Only you can claim the domain
+  const YOUR_SECRET = "METATRON878"; // replace with your secret code
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const code = document.getElementById('domain').value.trim();
+
+    if(code.toUpperCase() === YOUR_SECRET) {
+      success.style.display = 'block';
+      error.style.display = 'none';
+      // Redirect to your shop domain
+      setTimeout(() => { window.location.href = "shop.gosie-kartel"; }, 1500);
+    } else {
+      error.style.display = 'block';
+      success.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
